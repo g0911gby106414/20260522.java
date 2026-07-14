@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cake 風格單頁履歷範例" />
+  <title>Daniel 廖建順｜Full-stack Developer</title>
+  <style>
+    :root {
+      --text: #161616;
+      --muted: #666;
+      --line: #bdbdbd;
+      --green: #00b86b;
+      --dot: #aaa;
+      --page: #fff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: #f3f3f3;
+      color: var(--text);
+      font-family: Arial, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .resume {
+      width: min(100%, 1040px);
+      margin: 30px auto;
+      padding: 62px 68px 72px;
+      background: var(--page);
+      box-shadow: 0 3px 22px rgba(0,0,0,.08);
+    }
+
+    .profile {
+      position: relative;
+      min-height: 290px;
+      padding-right: 210px;
+    }
+
+    .profile h1 {
+      margin: 0 0 28px;
+      font-size: 34px;
+      line-height: 1.15;
+      letter-spacing: -.5px;
+    }
+
+    .profile h1 span { font-weight: 800; }
+
+    .headline {
+      margin: 0 0 2px;
+      font-size: 18px;
+    }
+
+    .career-row {
+      display: grid;
+      grid-template-columns: 145px 1fr;
+      gap: 6px;
+      margin: 1px 0;
+      font-size: 17px;
+    }
+
+    .contacts {
+      margin-top: 28px;
+      display: grid;
+      gap: 7px;
+      font-size: 17px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      word-break: break-word;
+    }
+
+    .contact-icon {
+      width: 17px;
+      height: 17px;
+      border-radius: 2px;
+      display: inline-grid;
+      place-items: center;
+      background: #111;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      flex: 0 0 17px;
+    }
+
+    .portrait {
+      position: absolute;
+      top: 5px;
+      right: 20px;
+      width: 128px;
+      height: 180px;
+      overflow: hidden;
+      background: #eef4f2;
+    }
+
+    .portrait svg { display: block; width: 100%; height: 100%; }
+
+    .section-title {
+      margin: 16px 0 18px;
+      font-size: 32px;
+      line-height: 1.2;
+      font-weight: 800;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+      margin-bottom: 46px;
+    }
+
+    .skill-column {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+    }
+
+    .skill-column h3 {
+      margin: 0 0 10px;
+      font-size: 28px;
+      font-weight: 500;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 23px;
+    }
+
+    .skill-column li { margin: 2px 0; }
+
+    .projects-title { margin-top: 0; }
+
+    .timeline {
+      position: relative;
+      margin-left: 18px;
+      padding-left: 54px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 20px;
+      bottom: 25px;
+      width: 1.5px;
+      background: #9f9f9f;
+    }
+
+    .project {
+      position: relative;
+      min-height: 245px;
+      padding: 0 100px 42px 0;
+    }
+
+    .project:last-child { min-height: 0; padding-bottom: 0; }
+
+    .project-number {
+      position: absolute;
+      left: -54px;
+      top: 0;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--dot);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 15px;
+    }
+
+    .project h3 {
+      margin: 0 0 2px;
+      font-size: 20px;
+      line-height: 1.45;
+      font-weight: 500;
+    }
+
+    .stack {
+      margin: 0 0 2px;
+      font-size: 19px;
+    }
+
+    .screenshots {
+      display: inline-block;
+      margin: 1px 0 12px;
+      color: var(--green);
+      font-size: 19px;
+    }
+
+    .project li {
+      margin: 2px 0;
+      font-size: 18px;
+    }
+
+    .project-badge {
+      position: absolute;
+      right: 10px;
+      top: 0;
+      width: 68px;
+      height: 68px;
+      border-radius: 3px;
+      background: #ddd;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 32px;
+    }
+
+    .education {
+      margin-top: 50px;
+    }
+
+    .education-row {
+      display: grid;
+      grid-template-columns: 155px 1fr;
+      gap: 10px;
+      margin: 7px 0;
+      font-size: 18px;
+    }
+
+    .powered {
+      margin-top: 75px;
+      text-align: center;
+      color: #333;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .powered span { color: var(--green); font-size: 23px; }
+
+    @media (max-width: 760px) {
+      body { background: #fff; }
+      .resume { margin: 0; padding: 34px 24px 50px; box-shadow: none; }
+      .profile { padding-right: 0; padding-top: 205px; }
+      .portrait { left: 0; right: auto; top: 0; width: 132px; height: 185px; }
+      .profile h1 { font-size: 30px; margin-bottom: 20px; }
+      .career-row { grid-template-columns: 1fr; gap: 0; margin-bottom: 8px; }
+      .skills { grid-template-columns: 1fr; gap: 24px; }
+      .project { padding-right: 0; }
+      .project-badge { display: none; }
+      .timeline { margin-left: 4px; padding-left: 42px; }
+      .project-number { left: -42px; }
+      .education-row { grid-template-columns: 1fr; gap: 0; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .resume { width: 100%; margin: 0; box-shadow: none; }
+      a { text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="resume">
+    <section class="profile">
+      <h1>Daniel <span>廖建順</span></h1>
+      <p class="headline">Experienced in Frontend &amp; Backend development (8 years)</p>
+
+      <div class="career-row"><span>陽明海運股份有限公司</span><span>幹練水手</span></div>
+      <div class="career-row"><span>大樹智能學院</span><span>java學員</span></div>
+
+      <div class="contacts">
+        <a class="contact-item" href="mailto:daniel.lin.dev@example.com"><span class="contact-icon">@</span>daniel.lin.dev@example.com</a>
+        <a class="contact-item" href="https://github.com/" target="_blank" rel="noreferrer"><span class="contact-icon">⌂</span>https://github.com/daniellin-dev</a>
+      </div>
+
+      <div class="portrait" aria-label="虛構人物照片">
+        <svg viewBox="0 0 128 180" role="img" aria-labelledby="portraitTitle">
+          <title id="portraitTitle">廖建順的虛構商務肖像</title>
+          <defs>
+            <linearGradient id="portraitBg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f6fbfa"/>
+              <stop offset="1" stop-color="#d6ebe5"/>
+            </linearGradient>
+          </defs>
+          <rect width="128" height="180" fill="url(#portraitBg)"/>
+          <path d="M0 25C29 3 95 7 128 0V180H0Z" fill="#eef7f5" opacity=".75"/>
+          <ellipse cx="64" cy="62" rx="27" ry="33" fill="#e4b792"/>
+          <path d="M37 60c0-27 11-41 29-41 17 0 29 13 28 40-8-8-19-12-31-12-10 0-19 4-26 13Z" fill="#24313a"/>
+          <path d="M22 180c3-48 18-72 42-72s39 24 42 72Z" fill="#1f3343"/>
+          <path d="M47 109l17 22 17-22-8-7H55Z" fill="#fff"/>
+          <path d="M58 130h12l4 50H54Z" fill="#546978"/>
+          <circle cx="54" cy="63" r="2.2" fill="#242424"/>
+          <circle cx="75" cy="63" r="2.2" fill="#242424"/>
+          <path d="M57 80c5 4 10 4 15 0" fill="none" stroke="#a56856" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">技能</h2>
+      <div class="skills">
+        <div class="skill-column">
+          <h3>後端開發&amp;規劃</h3>
+          <ul>
+            <li>Node.js：Koa、Express、NestJS</li>
+            <li>PHP：Laravel</li>
+            <li>Python：Flask、FastAPI</li>
+            <li>Java：Spring Boot、Hibernate</li>
+            <li>RESTful API services</li>
+            <li>RDBMS：MySQL、MariaDB、Replication、Backup、Optimization</li>
+            <li>NoSQL：MongoDB、Firebase、Redis</li>
+          </ul>
+        </div>
+        <div class="skill-column">
+          <h3>主機部署&amp;維護</h3>
+          <ul>
+            <li>AWS：EC2、S3、RDS</li>
+            <li>Google Cloud Platform</li>
+            <li>Docker deploy</li>
+            <li>GitHub Actions CI/CD</li>
+            <li>Nginx proxy &amp; load balance</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title projects-title">經歷專案</h2>
+      <div class="timeline">
+        <article class="project">
+          <div class="project-number">1</div>
+          <div class="project-badge">▥</div>
+          <h3>無</h3>
+          <p class="stack">(Laravel, MariaDB, Vue.js)</p>
+          <a class="screenshots" href="#">Screenshots</a>
+          <ul>
+            <li>借還系統</li>
+
+          </ul>
+        </article>
+
+        <article class="project">
+          <div class="project-number">2</div>
+          <div class="project-badge">▥</div>
+          <h3>BioHealth Gamification 前端行銷遊戲與後台管理</h3>
+          <p class="stack">(Laravel, MariaDB, Vue.js)</p>
+          <a class="screenshots" href="#">Screenshots</a>
+          <ul>
+            <li>客製化活動遊戲頁面</li>
+            <li>後台邀請信與名單管理</li>
+          </ul>
+        </article>
+
+        <article class="project">
+          <div class="project-number">3</div>
+          <div class="project-badge">▥</div>
+          <h3>xx系統</h3>
+          <p class="stack">(WordPress, Laravel, MariaDB, Vue.js)</p>
+          <a class="screenshots" href="#">Screenshots</a>
+          <ul>
+            <li>xxx</li>
+
+          </ul>
+        </article>
+
+        <article class="project">
+          <div class="project-number">4</div>
+          <div class="project-badge">▥</div>
+          <h3>yyy介面</h3>
+          <p class="stack">(Vue.js, Node.js)</p>
+          <a class="screenshots" href="#">Screenshots</a>
+          <ul>
+            <li>yyy</li>
+
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="education">
+      <h2 class="section-title">學歷</h2>
+      <div class="education-row"><span>1998 - 2002</span><span>國立海軍官校大學｜航輪學系 學士</span></div>
+
+    </section>
+
+    <div class="powered">Powered By <span>◆ Cake</span></div>
+  </main>
+</body>
+</html>
